@@ -1,4 +1,4 @@
-package com.example.selfawareness;
+package com.example.marketplace;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.selfawareness", appContext.getPackageName());
+        assertEquals("com.example.marketplace", appContext.getPackageName());
     }
 }
