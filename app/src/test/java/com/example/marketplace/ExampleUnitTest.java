@@ -1,4 +1,4 @@
-package com.example.selfawareness;
+package com.example.marketplace;
 
 import org.junit.Test;
 
