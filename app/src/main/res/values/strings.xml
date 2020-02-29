@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">SelfAwareness</string>
+    <string name="app_name">Marketplace</string>
+    <string name="kindly_provide_your_name">Kindly Provide Your Name</string>
+    <string name="proceed">PROCEED</string>
+    <string name="full_names">Full Names</string>
+    <string name="kindly_provide_your_full_names_to_proceed">How can we call you?</string>
+    <string name="textview">TextView</string>
+    <string name="sell">SELL</string>
+    <string name="buy">BUY</string>
+    <string name="what_would_you_like_to_do">What would you like to do?</string>
+
+    <string name="welcome">Welcome </string>
+    <string name="space">" : "</string>
+    <string name="Marketplace">Marketplace</string>
 </resources>
