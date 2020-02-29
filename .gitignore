@@ -1,5 +1,12 @@
 *.iml
 .gradle
+.idea
+Marketplace.iml
+settings.gradle
+local.properties
+gradlew.bat
+gradlew
+gradle.properties
 /local.properties
 /.idea/caches
 /.idea/libraries
