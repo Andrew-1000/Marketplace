@@ -1,62 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
-    tools:context=".MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <ImageView
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+
+            android:id="@+id/collapsing_toolbar"
+            style="@style/Widget.Marketplace.CollapsingToolbar"
             android:layout_width="match_parent"
-            android:layout_height="308dp"
-            android:layout_marginTop="1dp"
-            android:src="@drawable/image_24" />
-
-<!--        <EditText-->
-<!--            android:layout_width="350dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:gravity="center"-->
-<!--            android:id="@+id/username"-->
-<!--            android:textColor="#000000"-->
-<!--            android:backgroundTint="#ffffff"-->
-<!--            android:hint="@string/kindly_provide_your_name" />-->
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:id="@+id/text_input_layout_name">
-            <EditText
+            app:contentScrim="@color/colorPrimaryDark"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+            <ImageView
+                style="@style/Widget.Marketplace.CollapsingToolbarImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/marketplace"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.75" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimaryDark"
+                app:layout_collapseMode="pin" />
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/josefin"
+                android:textSize="20sp"
+                android:id="@+id/yourname"
+                android:text="@string/kindly_provide_your_full_names_to_proceed" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_name"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/edtusername"
-                android:hint="@string/full_names"
-                android:inputType="text"
-                android:gravity="center"
                 android:layout_gravity="center"
-                android:singleLine="true"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="20dp"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/edtusername"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/josefin"
+                    android:hint="@string/full_names"
+                    android:inputType="text"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-        <Button
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/button_round_corner"
-            android:text="@string/proceed"
-            android:textColor="#ffffff"
-            android:textSize="25sp" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/btnProceed"
+                android:drawablePadding="1dp"
+                android:gravity="center"
+                android:paddingStart="30dip"
+                android:paddingEnd="26dip"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/button_round_corner"
+                android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+                android:text="@string/proceed"
+                android:fontFamily="@font/josefin"
+                android:textColor="#ffffff"
+                android:textSize="25sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <ProgressBar
+                android:id="@+id/progressBar4"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:visibility="invisible"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

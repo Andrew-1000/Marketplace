@@ -1,10 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StartActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+
+            android:id="@+id/collapsing_toolbar"
+            style="@style/Widget.Marketplace.CollapsingToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentScrim="@color/colorPrimaryDark"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:title="@string/Marketplace">
+            <ImageView
+                style="@style/Widget.Marketplace.CollapsingToolbarImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/whattodo"
+                app:layout_collapseMode="pin"
+                app:layout_collapseParallaxMultiplier="2.75" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimaryDark"
+                app:layout_collapseMode="pin" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/josefin"
+                android:textSize="25sp"
+                android:id="@+id/welcome"
+                android:text="@string/welcome" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/josefin"
+                android:textSize="25sp"
+                android:text="@string/what_would_you_like_to_do" />
+            <Button
+                android:id="@+id/buy"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_round_corner"
+                android:drawableStart="@drawable/ic_local_grocery_store_black_24dp"
+                android:fontFamily="@font/josefin"
+                android:drawablePadding="1dp"
+                android:gravity="center"
+                android:paddingStart="30dip"
+                android:paddingEnd="26dip"
+                android:singleLine="true"
+                android:text="@string/buy"
+                android:textColor="#ffffff"
+                android:textSize="25sp" />
+            <Button
+                android:id="@+id/sell"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_round_corner"
+                android:drawableStart="@drawable/ic_monetization_on_black_24dp"
+                android:fontFamily="@font/josefin"
+                android:drawablePadding="1dp"
+                android:gravity="center"
+                android:paddingStart="30dip"
+                android:paddingEnd="26dip"
+                android:text="@string/sell"
+                android:textColor="#ffffff"
+                android:textSize="25sp" />
+        </LinearLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
