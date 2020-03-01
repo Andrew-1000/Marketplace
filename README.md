@@ -43,7 +43,7 @@ Click OK and project importation will begin
 * [Robolectric](http://robolectric.org/) - The test framework used to run Unit Tests on JVM
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [Butterknife](https://jakewharton.github.io/butterknife/) - Used for binding views
-```
+```java
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.edtusername) EditText mUserName;
