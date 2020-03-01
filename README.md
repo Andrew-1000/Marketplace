@@ -31,11 +31,19 @@ settings.gradle
 ```
 Click OK and project importation will begin
 ```
+## License
+    
+   This project is licensed under the MIT Licence - see the [LICENSE.md] (LICENSE.md) file for details
+
+## Author 
+    * **Andrew Ambia** - *Initial Work* - [Marketplace]*
+ 
+
 ## Built With
 * [Robolectric](http://robolectric.org/) - The test framework used to run Unit Tests on JVM
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [Butterknife](https://jakewharton.github.io/butterknife/) - Used for binding views
-```java
+```
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.edtusername) EditText mUserName;
@@ -50,11 +58,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         
     }
-    ```java
+    ```
+
     
-    ## Author 
-    * **Andrew Ambia** - *Initial Work* - [Marketplace]
-    
-    ## License
-    
-   This project is licensed under the MIT Licence - see the [LICENSE.md] (LICENSE.md) file for details
+  
