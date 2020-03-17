@@ -1,7 +1,8 @@
 <<<<<<< HEAD
 ## Marketplace
 Android Application build in Java for buying and selling products of choice
-
+### Code Beat
+[![codebeat badge](https://codebeat.co/badges/c816344e-6c60-4cbd-a607-7ea2ad1ec326)](https://codebeat.co/projects/github-com-andrew-1000-marketplace-feature-marketplace)
 ## Getting Started
 In order to get a copy of the project up and running on your local machine for development
 and testing purposes, the steps below can be helpful
@@ -24,6 +25,7 @@ Start Android Studio
 ```
 Click on File > New > Import Project
 ```
+##
 Import Dialogue shows up
 Navigate to the root folder of your application a look for
 ```
