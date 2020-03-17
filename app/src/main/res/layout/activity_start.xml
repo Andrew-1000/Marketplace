@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
-
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -70,7 +68,7 @@
                 android:paddingEnd="26dip"
                 android:singleLine="true"
                 android:text="@string/buy"
-                android:textColor="#ffffff"
+                android:textColor="@color/white"
                 android:textSize="25sp" />
             <Button
                 android:id="@+id/sell"
@@ -86,7 +84,7 @@
                 android:paddingStart="30dip"
                 android:paddingEnd="26dip"
                 android:text="@string/sell"
-                android:textColor="#ffffff"
+                android:textColor="@color/white"
                 android:textSize="25sp" />
         </LinearLayout>
 

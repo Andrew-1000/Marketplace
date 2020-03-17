@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.RegisterActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:padding="10dp"
+        android:hint="@string/full_names"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        app:endIconContentDescription="Write Full Names"
+        app:startIconDrawable="@drawable/ic_person_black_24dp"
+        app:endIconMode="custom"
+        app:errorEnabled="true"
+        android:backgroundTint="@color/colorPrimaryDark"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:id="@+id/userFullNames"
+            android:textSize="@dimen/reg_text_size"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:padding="10dp"
+        app:startIconDrawable="@drawable/ic_email_black_24dp"
+        android:hint="@string/emailaddress"
+        android:backgroundTint="@color/colorPrimaryDark"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:textSize="@dimen/reg_text_size"
+            android:id="@+id/email_address"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:hint="@string/password"
+        android:backgroundTint="@color/colorPrimaryDark"
+        app:endIconMode="password_toggle"
+        app:errorEnabled="true"
+        app:startIconDrawable="@drawable/ic_lock_outline_black_24dp"
+        app:helperTextEnabled="true"
+        android:layout_margin="4dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/reg_text_size"
+            android:inputType="textPassword"
+            android:id="@+id/userPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:id="@+id/registerUser"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:background="@drawable/button_round_corner"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:textSize="@dimen/reg_text_size"
+        android:text="@string/register"
+        android:layout_margin="20dp"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:id="@+id/openSignIn"
+        android:layout_height="wrap_content"
+        android:text="@string/already_registered_sign_in"
+        android:fontFamily="@font/josefin"
+        android:layout_gravity="center"
+        android:textSize="@dimen/reg_text_size"
+        android:gravity="center"
+        android:textColor="@color/white"/>
+
+
+</LinearLayout>
