@@ -82,10 +82,12 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:backgroundTint="@color/colorPrimaryDark"
                 android:layout_marginTop="50dp"
                 android:background="@drawable/button_round_corner"
                 android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
                 android:text="@string/proceed"
+                app:rippleColor="@color/colorAccent"
                 android:fontFamily="@font/josefin"
                 android:textColor="@color/white"
                 android:textSize="25sp" />
@@ -94,9 +96,8 @@
                 android:id="@+id/progressBar4"
                 style="?android:attr/progressBarStyle"
                 android:layout_width="match_parent"
-                android:visibility="visible"
+                android:visibility="invisible"
                 android:layout_height="wrap_content" />
-
         </LinearLayout>
 
     </com.google.android.material.appbar.AppBarLayout>

@@ -8,7 +8,36 @@
     <string name="sell">SELL</string>
     <string name="buy">BUY</string>
     <string name="what_would_you_like_to_do">What would you like to do?</string>
-    <string name="welcome">Hi </string>
+    <string name="hi">Hi </string>
     <string name="space">" "</string>
     <string name="Marketplace">Marketplace</string>
+    <string name="title_activity_buy">BUY PRODUCTS</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <integer name="column">2</integer>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="register">REGISTER</string>
+    <string name="hint">Username</string>
+    <string name="signin">SIGN IN</string>
+    <string name="keep_me_signed_in">Keep me signed in</string>
+    <string name="checkbox">com.example.marketplace.checkbox</string>
+    <string name="email">com.example.marketplace.email</string>
+    <string name="pasword">com.example.marketplace.password</string>
+    <string name="add_to_cart">ADD TO CART</string>
+    <string name="emailaddress">Email Address</string>
+    <string name="not_registered_click_here">Not Registered? Click here</string>
+    <string name="already_registered_sign_in">Already Registered? Sign In</string>
+    <string name="title_activity_sell">SellActivity</string>
+    <string name="add_new_category">Add New Category</string>
+    <string name="category_name">Category Name</string>
+    <string name="saved_successfully">New Category added successfully</string>
+    <string name="home">Home</string>
+    <string name="logout">Logout</string>
 </resources>

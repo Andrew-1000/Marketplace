@@ -16,10 +16,10 @@
 
     <style name="Widget.Marketplace.CollapsingToolbar" parent="">
         <item name="collapsedTitleTextAppearance">@style/TextAppearance.Marketplace.Logo</item>
-        <item name="contentScrim">?attr/colorPrimary</item>
+        <item name="contentScrim">?attr/colorPrimaryDark</item>
         <item name="expandedTitleGravity">top</item>
-        <item name="expandedTitleMarginStart">124dp</item>
-        <item name="expandedTitleMarginTop">140dp</item>
+        <item name="expandedTitleMarginStart">125dp</item>
+        <item name="expandedTitleMarginTop">310dp</item>
         <item name="expandedTitleTextAppearance">@style/TextAppearance.Marketplace.Logo</item>
         <item name="scrimVisibleHeightTrigger">140dp</item>
     </style>
@@ -28,11 +28,13 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/josefin</item>
+        <item name="android:textColor">@color/colorAccent1</item>
     </style>
 
-<!--    <style name="ThemeOverlay.Shrine.BottomNavigation" parent="">-->
-<!--        <item name="colorPrimary">?attr/colorAccent</item>-->
-<!--    </style>-->
+    <!--    <style name="ThemeOverlay.Shrine.BottomNavigation" parent="">-->
+    <!--        <item name="colorPrimary">?attr/colorAccent</item>-->
+    <!--    </style>-->
     <style name="Widget.Marketplace.CollapsingToolbarImage" parent="">
         <item name="android:layout_marginTop">48dp</item>
 
@@ -48,7 +50,31 @@
     </style>
 
     <style name="customfontstyle" parent="@android:style/TextAppearance.Small">
-        <item name="android:fontFamily">@fonts/Lato-Regular</item>
+        <item name="android:fontFamily">@font/josefin</item>
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="materialtheme" parent="Theme.MaterialComponents">
+        <item name="colorPrimary">@android:color/holo_orange_light</item>
+        <item name="colorPrimaryDark">@android:color/holo_orange_dark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="NoActionBar" parent="Theme.MaterialComponents">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

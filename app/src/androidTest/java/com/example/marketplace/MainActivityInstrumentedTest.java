@@ -8,6 +8,8 @@ import androidx.test.filters.LargeTest;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 
+import com.example.marketplace.ui.MainActivity;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -51,7 +53,7 @@ public class MainActivityInstrumentedTest {
             System.out.println("Process was interrupted");
         }
         onView(withId(R.id.btnProceed)).perform(click());
-        onView(withId(R.id.welcome)).check(matches(withText("Welcome : "  + newUser )));
+        onView(withId(R.id.welcome)).check(matches(withText("Hi "  + newUser )));
     }
 
 

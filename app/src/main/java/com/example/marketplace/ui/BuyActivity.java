@@ -86,7 +86,7 @@ public class BuyActivity extends AppCompatActivity {
 
     private void openBuyActivity() {
         Intent intent = new Intent( BuyActivity.this, BuyActivity.class );
-        intent.setFl
+        intent.setFlags( Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK  );
         startActivity( intent );
     }
 

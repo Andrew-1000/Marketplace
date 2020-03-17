@@ -1,6 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/product_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:clickable="true"
+    app:rippleColor="@color/colorPrimaryDark"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:focusable="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+
+        android:focusable="true"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:padding="5dp"
+            android:textColor="@color/colorAccent1"
+            android:textSize="18sp"
+            android:fontFamily="@font/josefin"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="152dp"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter" />
+
+        <LinearLayout
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:clickable="true"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/likeButton"
+                style="?android:attr/actionButtonStyle"
+                android:layout_width="@dimen/fortyeightdp"
+                android:layout_height="@dimen/fortyeightdp"
+                android:layout_gravity="bottom"
+                android:minWidth="@dimen/fortyeightdp"
+                android:src="@drawable/ic_favorite_border_black_24dp" />
+
+            <ImageButton
+                android:id="@+id/shareButton"
+                style="?android:attr/actionButtonStyle"
+                android:layout_width="@dimen/fortyeightdp"
+                android:layout_height="@dimen/fortyeightdp"
+                android:layout_gravity="bottom"
+                android:src="@drawable/ic_share_black_24dp" />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:orientation="horizontal"
+
+            android:padding="4dp">
+
+            <TextView
+                android:layout_width="118dp"
+                android:layout_height="match_parent"
+                android:gravity="center|end"
+                android:text="@string/add_to_cart"
+                android:textColor="@color/colorAccent1" />
+            <ImageButton
+                android:id="@+id/addToCart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/actionButtonStyle"
+                app:srcCompat="@drawable/ic_add_shopping_cart_black_24dp" />
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

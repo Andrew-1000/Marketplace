@@ -5,6 +5,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.widget.TextView;
 
+import com.example.marketplace.ui.MainActivity;
+import com.example.marketplace.ui.StartActivity;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

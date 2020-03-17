@@ -44,7 +44,7 @@
                 android:fontFamily="@font/josefin"
                 android:textSize="25sp"
                 android:id="@+id/welcome"
-                android:text="@string/welcome" />
+                android:text="@string/hi" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,6 +62,7 @@
                 android:background="@drawable/button_round_corner"
                 android:drawableStart="@drawable/ic_local_grocery_store_black_24dp"
                 android:fontFamily="@font/josefin"
+                android:backgroundTint="@color/colorPrimaryDark"
                 android:drawablePadding="1dp"
                 android:gravity="center"
                 android:paddingStart="30dip"
@@ -80,6 +81,7 @@
                 android:drawableStart="@drawable/ic_monetization_on_black_24dp"
                 android:fontFamily="@font/josefin"
                 android:drawablePadding="1dp"
+                android:backgroundTint="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:paddingStart="30dip"
                 android:paddingEnd="26dip"

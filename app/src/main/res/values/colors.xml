@@ -5,4 +5,6 @@
     <color name="colorAccent">#f5deb3</color>
     <color name="colorAccent1">#000000</color>
     <color name="white">#ffffff</color>
+    <color name="ripplecolor">#D2CC7BE2</color>
+
 </resources>

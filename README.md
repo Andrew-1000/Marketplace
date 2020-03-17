@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## Marketplace
 Android Application build in Java for buying and selling products of choice
 
@@ -63,3 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
     
   
+=======
+# Marketplace
+Android Application build in Java for buying and selling products of choice
+>>>>>>> 4fc3e47636ee6a7bd4760075e7054a631ce508da

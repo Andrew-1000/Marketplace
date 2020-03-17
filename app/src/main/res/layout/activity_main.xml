@@ -83,12 +83,14 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:backgroundTint="@color/colorPrimaryDark"
                 android:layout_marginTop="50dp"
                 android:background="@drawable/button_round_corner"
                 android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
                 android:text="@string/proceed"
                 android:fontFamily="@font/josefin"
                 android:textColor="@color/white"
+                app:rippleColor="@color/white"
                 android:textSize="25sp" />
 
             <ProgressBar
