@@ -37,7 +37,7 @@ public class RegisterActivity extends AppCompatActivity  implements View.OnClick
         ButterKnife.bind(this);
         mAuth = FirebaseAuth.getInstance();
         registerButton.setOnClickListener(this);
-
+        mOpenSignIn.setOnClickListener( this );
 
     }
 
@@ -51,7 +51,15 @@ public class RegisterActivity extends AppCompatActivity  implements View.OnClick
         if (v == registerButton) {
             createUserWithEmailAndPassword();
         }
+        if (v == mOpenSignIn) {
+            openSignIn();
+        }
 
+    }
+
+    private void openSignIn() {
+        Intent intent = new Intent( RegisterActivity.this, LoginActivity.class );
+        startActivity( intent );
     }
 
     private void createUserWithEmailAndPassword() {
@@ -71,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity  implements View.OnClick
 
 
                     } else {
-                        Toast.makeText(RegisterActivity.this, "An Error occured, please try again..", Toast.LENGTH_LONG).show();
+                        Toast.makeText(RegisterActivity.this, "Check your Internet Connection and Try Again..", Toast.LENGTH_LONG).show();
                     }
                 } );
     }

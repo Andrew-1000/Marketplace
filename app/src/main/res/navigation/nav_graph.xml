@@ -3,26 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/HomeFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.marketplace.ui.FirstFragment"
+        android:id="@+id/HomeFragment"
+        android:name="com.example.marketplace.ui.SellFragments.HomeFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_home"
+       />
 
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-    </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.marketplace.ui.SecondFragment"
+        android:id="@+id/DashboardFragment"
+        android:name="com.example.marketplace.ui.SellFragments.DashboardFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_dashboard"/>
 
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
+    <fragment
+        android:id="@+id/OrdersFragment"
+        android:name="com.example.marketplace.ui.SellFragments.OrdersFragment"
+        android:label="Orders Fragment"
+        tools:layout="@layout/fragment_orders" />
+    <fragment
+        android:id="@+id/MyStoresFragment"
+        android:name="com.example.marketplace.ui.SellFragments.MyStoresFragment"
+        android:label="My Stores Fragement"
+        tools:layout="@layout/fragment_my_stores"
+        />
+
 </navigation>

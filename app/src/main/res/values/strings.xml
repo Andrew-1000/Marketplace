@@ -13,8 +13,8 @@
     <string name="Marketplace">Marketplace</string>
     <string name="title_activity_buy">BUY PRODUCTS</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="first_fragment_label">Home </string>
+    <string name="second_fragment_label">Orders </string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <integer name="column">2</integer>
@@ -40,4 +40,15 @@
     <string name="saved_successfully">New Category added successfully</string>
     <string name="home">Home</string>
     <string name="logout">Logout</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="notification">Notification</string>
+    <string name="my_stores">My Stores</string>
+    <string name="orders">Orders</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="store_location">Store Location</string>
+    <string name="add_new_store">Add New Store</string>
+    <string name="my_orders">My Orders</string>
+
 </resources>

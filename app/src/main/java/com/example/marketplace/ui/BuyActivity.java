@@ -16,6 +16,7 @@ import com.example.marketplace.adapter.ProductAdapter;
 import com.example.marketplace.model.Product;
 import com.example.marketplace.network.MarketplaceClient;
 import com.example.marketplace.network.MarketplaceInterface;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
@@ -28,8 +29,6 @@ public class BuyActivity extends AppCompatActivity {
     RecyclerView productsRecyclerView;
     private ProductAdapter productAdapter;
     Toolbar toolbar;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,15 +47,12 @@ public class BuyActivity extends AppCompatActivity {
                     getProductsData(response.body());
                     productAdapter.notifyDataSetChanged();
                 }
-
             }
-
             @Override
             public void onFailure(Call<List<Product>> call, Throwable t) {
 
             }
         });
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -81,6 +77,11 @@ public class BuyActivity extends AppCompatActivity {
 
 
     private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent( BuyActivity.this, LoginActivity.class );
+        intent.setFlags( Intent.FLAG_ACTIVITY_NEW_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK );
+        startActivity( intent );
+        finish();
 
     }
 

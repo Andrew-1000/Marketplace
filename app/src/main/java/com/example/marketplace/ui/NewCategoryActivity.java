@@ -1,14 +1,16 @@
 package com.example.marketplace.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,6 +24,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -31,16 +35,13 @@ public class NewCategoryActivity extends AppCompatActivity implements View.OnCli
     @BindView(R.id.addCategoryButton)
     MaterialButton btnAddCategory;
 
-
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseDatabase firebaseDatabase ;
     private DatabaseReference newCategoryReference;
 
-
-    private RecyclerView mCategories;
+    private RecyclerView categoriesRecyclerView;
     protected DatabaseReference mDatabase;
-    Toolbar toolbar;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -51,25 +52,44 @@ public class NewCategoryActivity extends AppCompatActivity implements View.OnCli
     }
 
     @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if(itemId == R.id.home) {
+            Intent intent = new Intent( NewCategoryActivity.this, BuyActivity.class );
+            startActivity( intent );
+
+        }
+        if (itemId ==R.id.logout) {
+            logout();
+        }
+        return super.onOptionsItemSelected( item );
+    }
+
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent( NewCategoryActivity.this, LoginActivity.class );
+        intent.setFlags( Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK );
+        startActivity( intent );
+        finish();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_category);
-//        toolbar = findViewById( R.id.toolbar );
-//        setSupportActionBar( toolbar );
-
 
         ButterKnife.bind(this);
-        mCategories = findViewById( R.id.categoryRecyclerView );
+        categoriesRecyclerView = findViewById( R.id.categoryRecyclerView );
         btnAddCategory.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
-        newCategoryReference = firebaseDatabase.getInstance().getReference("Category");
+        newCategoryReference = FirebaseDatabase.getInstance().getReference("Category");
 
         mDatabase = FirebaseDatabase.getInstance().getReference("Category");
         mDatabase.keepSynced( true );
-        mCategories.setHasFixedSize( true );
-        mCategories.setLayoutManager( new GridLayoutManager( this, 2 ) );
+        categoriesRecyclerView.setHasFixedSize( true );
+        categoriesRecyclerView.setLayoutManager( new GridLayoutManager( this, 2 ) );
     }
 
     @Override
@@ -81,25 +101,30 @@ public class NewCategoryActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseRecyclerAdapter<Category, CategoryViewHolder>
-                firebaseRecyclerAdapter = new FirebaseRecyclerAdapter
-                <Category, CategoryViewHolder>
-                (Category.class, R.layout.category_card, CategoryViewHolder.class, mDatabase) {
+        FirebaseRecyclerAdapter<Category, CategoryViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter <Category, CategoryViewHolder> (Category.class, R.layout.category_card, CategoryViewHolder.class, mDatabase) {
             @Override
             protected void populateViewHolder(CategoryViewHolder categoryViewHolder, Category category, int i) {
+
                 categoryViewHolder.setCategory( category.getCategory_name() );
+                categoryViewHolder.itemView.setOnClickListener( new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent moreDetails = new Intent( NewCategoryActivity.this, SellActivity.class);
+                        startActivity( moreDetails );
+                    }
+                } );
             }
         };
-       mCategories.setAdapter( firebaseRecyclerAdapter );
+       categoriesRecyclerView.setAdapter( firebaseRecyclerAdapter );
     }
-
-
     private void saveCategory() {
 
-        String category_name = categoryName.getText().toString().trim();
+        String category_name = Objects.requireNonNull( categoryName.getText() ).toString().trim();
         if (!TextUtils.isEmpty( category_name )) {
             String id = newCategoryReference.push().getKey();
             Category category = new Category(category_name);
+            assert id != null;
             newCategoryReference.child( id ).setValue( category );
             Toast.makeText( NewCategoryActivity.this, "New Category Added Successfully", Toast.LENGTH_LONG ).show();
             categoryName.setText( "" );

@@ -26,7 +26,7 @@
             android:fontFamily="@font/josefin"
             android:hint="@string/emailaddress"
             android:inputType="text"
-            android:textAppearance="@style/materialtheme"
+            android:textAppearance="@style/Theme.Material"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -48,7 +48,7 @@
             android:fontFamily="@font/josefin"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:textAppearance="@style/materialtheme"
+            android:textAppearance="@style/Theme.Material"
             android:textColor="@color/white"
             android:textColorHighlight="@color/colorPrimaryDark"
             android:textColorHint="@color/white"

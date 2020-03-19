@@ -7,16 +7,19 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.marketplace.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -64,6 +67,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         inflater.inflate( R.menu.home, menu );
         inflater.inflate( R.menu.logout, menu );
         return super.onCreateOptionsMenu( menu );
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.home) {
+            startBuyActivity();
+        } if (id == R.id.logout) {
+            logout();
+        }
+        return super.onOptionsItemSelected( item );
+    }
+
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent( MainActivity.this, LoginActivity.class );
+        intent.setFlags( Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK );
+        startActivity( intent );
+        finish();
+    }
+
+    private void startBuyActivity() {
+        Intent intent = new Intent( MainActivity.this, BuyActivity.class );
+        startActivity( intent );
     }
 
     private void openActivity() {

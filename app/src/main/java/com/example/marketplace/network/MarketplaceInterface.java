@@ -9,7 +9,7 @@ import retrofit2.http.GET;
 
 public interface MarketplaceInterface {
 
-    @GET("/bins/fvckq")
+    @GET("/bins/8xile")
     Call<List<Product>> getAllProducts();
 
 }

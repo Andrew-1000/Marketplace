@@ -8,16 +8,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.marketplace.R;
 
-public  class CategoryViewHolder extends RecyclerView.ViewHolder {
+public class KioskViewHolder extends RecyclerView.ViewHolder {
     View mView;
-
-    public CategoryViewHolder(@NonNull View itemView) {
+    public KioskViewHolder(@NonNull View itemView) {
         super( itemView );
         mView = itemView;
     }
-    public void setCategory(String category){
-        TextView catName =  mView.findViewById( R.id.categoryName );
-        catName.setText( category );
-    }
 
+    public void setKiosk(String kiosk_location) {
+        TextView kioskLocation = mView.findViewById( R.id.kioskName );
+        kioskLocation.setText( kiosk_location );
+    }
 }
