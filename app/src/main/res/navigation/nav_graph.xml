@@ -9,8 +9,7 @@
         android:id="@+id/HomeFragment"
         android:name="com.example.marketplace.ui.SellFragments.HomeFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_home"
-       />
+        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/DashboardFragment"
@@ -26,8 +25,7 @@
     <fragment
         android:id="@+id/MyStoresFragment"
         android:name="com.example.marketplace.ui.SellFragments.MyStoresFragment"
-        android:label="My Stores Fragement"
-        tools:layout="@layout/fragment_my_stores"
-        />
+        android:label="My Stores Fragment"
+        tools:layout="@layout/fragment_my_stores" />
 
 </navigation>

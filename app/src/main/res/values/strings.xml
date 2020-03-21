@@ -50,5 +50,12 @@
     <string name="store_location">Store Location</string>
     <string name="add_new_store">Add New Store</string>
     <string name="my_orders">My Orders</string>
+    <string name="product_name">Product Name</string>
+    <string name="product_price">Product Price</string>
+    <string name="product_description">Product Description</string>
+    <string name="add_product">Sell Product</string>
+    <string name="location">Kiosk Location</string>
+    <string name="category">Category</string>
+    <string name="image_name">Image Name</string>
 
 </resources>

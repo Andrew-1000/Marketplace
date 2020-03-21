@@ -5,19 +5,47 @@ import com.google.gson.annotations.SerializedName;
 public class Product {
     private String product_id;
     @SerializedName("title")
-    private String title;
-    @SerializedName("imageurl")
-    private String image;
-    @SerializedName("price")
-    private String price;
+    private String name;
     @SerializedName("description")
     private String description;
+    @SerializedName("price")
+    private String price;
+    private String location;
+    private String category;
+    private String imageName;
+    @SerializedName("imageurl")
+    private String imageUrl;
+
+
+
+
 
     public Product( String title, String image, String price, String description) {
-        this.title = title;
-        this.image = image;
+        this.name = title;
+        this.imageUrl = image;
         this.price = price;
         this.description = description;
+    }
+    public Product( String title,  String description, String price, String location, String category, String imageName, String imageUrl ) {
+        this.name = title;
+        this.description = description;
+        this.price = price;
+        this.location = location;
+        this.category = category;
+        if (imageName.trim().equals( "" )) {
+            imageName = "No name";
+        }
+        this.imageUrl = imageUrl;
+
+
+
+
+
+    }
+
+
+    public Product() {
+
     }
 
     public String getProduct_id() {
@@ -28,20 +56,20 @@ public class Product {
         this.product_id = product_id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getImage() {
-        return image;
+        return imageUrl;
     }
 
     public void setImage(String image) {
-        this.image = image;
+        this.imageUrl = image;
     }
 
 
@@ -59,5 +87,36 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

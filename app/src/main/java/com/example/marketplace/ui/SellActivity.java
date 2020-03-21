@@ -12,63 +12,57 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import com.example.marketplace.R;
+import com.example.marketplace.ui.SellFragments.DashboardFragment;
+import com.example.marketplace.ui.SellFragments.HomeFragment;
+import com.example.marketplace.ui.SellFragments.MyStoresFragment;
+import com.example.marketplace.ui.SellFragments.OrdersFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Objects;
+
 public class SellActivity extends AppCompatActivity implements  View.OnClickListener {
     FloatingActionButton fab;
-
-    BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sell);
 
-        bottomNavigationView = findViewById( R.id.bottom_nav_view );
-
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder( R.id.navigation_home, R.id.navigation_dashboard,
-                R.id.navigation_orders, R.id.nav_my_local_stores).build();
-        NavController navController = Navigation.findNavController( this, R.id.fragment_view );
-        NavigationUI.setupActionBarWithNavController( this, navController, appBarConfiguration );
-        NavigationUI.setupWithNavController( bottomNavigationView, navController );
+        BottomNavigationView bottomNavigationView = findViewById( R.id.bottom_nav_view );
 
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(this);
 
-//        bottomNavigationView.setOnNavigationItemSelectedListener( item -> {
-//            Fragment fragment;
-//           switch (item.getItemId()) {
-//               case R.id.navigation_home:
-//                   fragment = new HomeFragment();
-//                   loadFragment(fragment);
-//                   Objects.requireNonNull( getSupportActionBar() ).setTitle( R.string.home );
-//                   break;
-//
-//               case R.id.navigation_dashboard:
-//                   fragment = new DashboardFragment();
-//                   loadFragment( fragment );
-//                   Objects.requireNonNull( getSupportActionBar() ).setTitle(R.string.dashboard );
-//                    break;
-//               case R.id.navigation_orders:
-//                   fragment = new OrdersFragment();
-//                   loadFragment( fragment );
-//                   Objects.requireNonNull( getSupportActionBar() ).setTitle( R.string.my_orders );
-//                    break;
-//               case R.id.nav_my_local_stores:
-//                   fragment = new MyStoresFragment();
-//                   loadFragment( fragment );
-//                   Objects.requireNonNull( getSupportActionBar() ).setTitle( R.string.my_stores );
-//                   break;
-//           }
-//            return true;
-//        } );
+        bottomNavigationView.setOnNavigationItemSelectedListener( item -> {
+            Fragment fragment;
+           switch (item.getItemId()) {
+               case R.id.navigation_home:
+                   fragment = new HomeFragment();
+                   loadFragment(fragment);
+                   Objects.requireNonNull( getSupportActionBar() ).setTitle( R.string.home );
+                   break;
+
+               case R.id.navigation_dashboard:
+                   fragment = new DashboardFragment();
+                   loadFragment( fragment );
+                   Objects.requireNonNull( getSupportActionBar() ).setTitle(R.string.dashboard );
+                    break;
+               case R.id.navigation_orders:
+                   fragment = new OrdersFragment();
+                   loadFragment( fragment );
+                   Objects.requireNonNull( getSupportActionBar() ).setTitle( R.string.my_orders );
+                    break;
+               case R.id.nav_my_local_stores:
+                   fragment = new MyStoresFragment();
+                   loadFragment( fragment );
+                   Objects.requireNonNull( getSupportActionBar() ).setTitle( R.string.my_stores );
+                   break;
+           }
+            return true;
+        } );
     }
     private void loadFragment(Fragment fragment) {
 
