@@ -6,5 +6,6 @@
     <color name="colorAccent1">#000000</color>
     <color name="white">#ffffff</color>
     <color name="ripplecolor">#D2CC7BE2</color>
+    <color name="spinner">#2D2928</color>
 
 </resources>

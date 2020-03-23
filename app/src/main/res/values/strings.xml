@@ -54,8 +54,10 @@
     <string name="product_price">Product Price</string>
     <string name="product_description">Product Description</string>
     <string name="add_product">Sell Product</string>
-    <string name="location">Kiosk Location</string>
+    <string name="location">Choose Location</string>
+    <string name="choose_category">Choose Category</string>
     <string name="category">Category</string>
     <string name="image_name">Image Name</string>
+    <string name="upload_an_image">Upload an Image</string>
 
 </resources>

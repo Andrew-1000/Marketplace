@@ -12,7 +12,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
+        android:paddingStart="@dimen/margin_top"
+        android:paddingEnd="@dimen/margin_top"
         tools:context=".ui.SellFragments.HomeFragment">
 
         <androidx.constraintlayout.widget.Guideline
@@ -35,16 +36,19 @@
             android:id="@+id/txt_product_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/layout_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:layout_constraintTop_toTopOf="@+id/guideline14">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/product_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="@dimen/layout_margin"
+                android:padding="@dimen/padding_thirty_dp"
                 android:fontFamily="@font/josefin"
                 android:hint="@string/product_name"
                 android:inputType="text"
@@ -56,18 +60,20 @@
             android:id="@+id/textInputLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/layout_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:layout_constraintTop_toBottomOf="@+id/txt_product_name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/product_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="@dimen/layout_margin"
                 android:fontFamily="@font/josefin"
                 android:gravity="top|left"
+                android:padding="@dimen/padding_thirty_dp"
                 android:hint="@string/product_description"
                 android:inputType="textMultiLine"
                 android:lines="6"
@@ -83,16 +89,18 @@
             android:id="@+id/textInputLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/layout_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/product_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="@dimen/layout_margin"
+                android:padding="@dimen/padding_thirty_dp"
                 android:fontFamily="@font/josefin"
                 android:hint="@string/product_price"
                 android:inputType="number"
@@ -104,13 +112,15 @@
             android:id="@+id/appCompatTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginTop="8dp"
+            android:layout_margin="@dimen/layout_margin"
             android:padding="5dp"
             android:text="@string/location"
-            android:textSize="20sp"
+            android:textSize="18sp"
+            android:fontFamily="@font/josefin"
+            android:textStyle="bold"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.049"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
 
@@ -118,47 +128,54 @@
             android:id="@+id/appCompatTextView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_marginTop="16dp"
+            android:layout_margin="@dimen/layout_margin"
+
             android:padding="5dp"
-            android:text="@string/category"
-            android:textSize="20sp"
+            android:text="@string/choose_category"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:fontFamily="@font/josefin"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.021"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/kiosk_location" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/appCompatTextView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_width="191dp"
+            android:layout_height="44dp"
+            android:layout_margin="@dimen/layout_margin"
+            android:layout_marginTop="16dp"
             android:padding="5dp"
-            android:text="Upload an Image"
-            android:textSize="20sp"
+            android:text="@string/upload_an_image"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:fontFamily="@font/josefin"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.021"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/product_category" />
 
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/kiosk_location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:padding="@dimen/margin_top"
+            android:layout_width="376dp"
+            android:layout_height="55dp"
+            android:layout_margin="@dimen/layout_margin"
+            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
 
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/product_category"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginTop="8dp"
-            android:padding="@dimen/margin_top"
+            android:layout_width="376dp"
+            android:layout_height="55dp"
+            android:layout_margin="@dimen/layout_margin"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2" />
 
@@ -166,7 +183,6 @@
             android:id="@+id/saveProduct"
             android:layout_width="198dp"
             android:layout_height="57dp"
-            android:layout_marginTop="16dp"
             android:background="@drawable/button_round_corner"
             android:backgroundTint="@color/colorPrimaryDark"
             android:fontFamily="@font/josefin"
@@ -174,32 +190,18 @@
             android:textSize="@dimen/reg_text_size"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_name"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
             app:rippleColor="@color/white" />
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="55dp"
-            android:layout_height="54dp"
-            android:src="@android:drawable/ic_menu_gallery"
+            android:layout_width="101dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_image_black_24dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.044"
+            app:layout_constraintHorizontal_bias="0.013"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3" />
-
-        <EditText
-            android:id="@+id/image_name"
-            android:layout_width="306dp"
-            android:layout_height="46dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:hint="@string/image_name"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.116"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3" />
 
         <ProgressBar
@@ -207,7 +209,9 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:indeterminateDuration="@integer/config_navAnimTime"
+            android:indeterminateOnly="true"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/saveProduct" />

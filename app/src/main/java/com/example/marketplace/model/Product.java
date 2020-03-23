@@ -26,15 +26,13 @@ public class Product {
         this.price = price;
         this.description = description;
     }
-    public Product( String title,  String description, String price, String location, String category, String imageName, String imageUrl ) {
+    public Product( String title,  String description, String price, String location, String category, String imageUrl ) {
         this.name = title;
         this.description = description;
         this.price = price;
         this.location = location;
         this.category = category;
-        if (imageName.trim().equals( "" )) {
-            imageName = "No name";
-        }
+
         this.imageUrl = imageUrl;
 
 

@@ -9,4 +9,6 @@
     <dimen name="fortyeightdp">48dp</dimen>
     <dimen name="add_to_cart">332dp</dimen>
     <dimen name="reg_text_size">18sp</dimen>
+    <dimen name="padding_thirty_dp">20dp</dimen>
+    <dimen name="layout_margin">5dp</dimen>
 </resources>

@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -24,10 +23,12 @@ import com.example.marketplace.R;
 import com.example.marketplace.model.Product;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -68,13 +69,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @BindView( R.id.kiosk_location ) AppCompatSpinner kioskLocation;
     @BindView( R.id.product_category ) AppCompatSpinner productCategory;
     @BindView( R.id.imageView ) ImageView imageView;
-    @BindView( R.id.image_name ) EditText imageName;
+
     @BindView( R.id.saveProduct ) MaterialButton btnSaveProduct;
     @BindView( R.id.progressBar )
     ProgressBar progressBar;
 
     private Uri imageUri;
     private StorageTask savingTask;
+
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -106,43 +108,94 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         kioskSpinner.setAdapter( kioskAdapter );
         categorySpinner.setAdapter( categoriesAdapter );
-        getKiosksToSpinner();
-        getCategoriesToSpinner();
+        getKiosksToSpinners();
+        getCategoriesToSpinners();
 
         super.onViewCreated( view, savedInstanceState );
     }
 
-            private void getKiosksToSpinner() {
-                valueEventListener = kioskDatabaseReference.addValueEventListener( new ValueEventListener() {
+//            private void getKiosksToSpinner() {
+//
+//                valueEventListener = kioskDatabaseReference.addValueEventListener( new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        for (DataSnapshot item : dataSnapshot.getChildren()) {
+//                            kioskSpinnerData.add( Objects.requireNonNull( item.getValue() ).toString());
+//                        }
+//                        kioskAdapter.notifyDataSetChanged();
+//                    }
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//                    }
+//                } );
+//            }
+            private void getKiosksToSpinners() {
+                Query valueEventListener = kioskDatabaseReference.orderByChild( "kiosk_location" );
+                valueEventListener.addChildEventListener( new ChildEventListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot item : dataSnapshot.getChildren()) {
-                            kioskSpinnerData.add( Objects.requireNonNull( item.getValue() ).toString());
+                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                        for (DataSnapshot item: dataSnapshot.getChildren()) {
+                            kioskSpinnerData.add( Objects.requireNonNull( item.getValue() ).toString() );
                         }
                         kioskAdapter.notifyDataSetChanged();
                     }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
+
                     }
                 } );
             }
 
-            private void getCategoriesToSpinner(){
-                valueEventListener = categoryDatabaseReference.child( "" ).addValueEventListener( new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot item: dataSnapshot.getChildren()) {
-                            categoriesSpinnerData.add( Objects.requireNonNull( item.getValue() ).toString() );
-                        }
-                        categoriesAdapter.notifyDataSetChanged();
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+    private void getCategoriesToSpinners(){
+        Query valueEventListener = categoryDatabaseReference.orderByChild( "category_name" );
+        valueEventListener.addChildEventListener( new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                for (DataSnapshot item: dataSnapshot.getChildren()){
+                    categoriesSpinnerData.add( Objects.requireNonNull( item.getValue().toString() ) );
+                }
+                categoriesAdapter.notifyDataSetChanged();
 
-                    }
-                } );
             }
 
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        } );
+    }
     @Override
     public void onClick(View v) {
         if (v == imageView) {
@@ -192,7 +245,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     .addOnSuccessListener( taskSnapshot -> {
                        //Delays reset of progress bar for 5 sec
                         Handler handler = new Handler(  );
-                        handler.postDelayed( () -> progressBar.setProgress( 0 ), 5000 );
+                        Toast.makeText( getActivity(), "Posting Product", Toast.LENGTH_LONG ).show();
+                        handler.postDelayed( () -> progressBar.setProgress( 0 ), 500 );
 
                         Toast.makeText( getActivity(), "Product successfully posted", Toast.LENGTH_LONG ).show();
                         Product product = new Product(
@@ -201,7 +255,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                                 Objects.requireNonNull( productPrice.getText() ).toString().trim(),
                                 kioskLocation.getSelectedItem().toString(),
                                 productCategory.getSelectedItem().toString(),
-                                imageName.getText().toString().trim(),
                                 Objects.requireNonNull( taskSnapshot.getUploadSessionUri() ).toString());
 
                         String id = productsDatabaseReference.push().getKey();
