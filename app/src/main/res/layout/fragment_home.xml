@@ -202,7 +202,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.013"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3" />
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3"
+            android:contentDescription="@string/product_image" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -212,6 +213,7 @@
             android:indeterminateDuration="@integer/config_navAnimTime"
             android:indeterminateOnly="true"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/saveProduct" />

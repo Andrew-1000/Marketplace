@@ -13,6 +13,8 @@ import com.example.marketplace.model.Product;
 import com.example.marketplace.R;
 import com.squareup.picasso.Picasso;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
@@ -25,9 +27,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 
 
-    public class ProductViewHolder extends RecyclerView.ViewHolder {
+    public static class ProductViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         TextView price;
+        TextView name;
         private ImageView imageView;
         Context context;
 
@@ -37,23 +40,23 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             mView = itemView;
             price = mView.findViewById(R.id.price);
             imageView = mView.findViewById(R.id.image);
+            name = mView.findViewById( R.id.name );
             context = itemView.getContext();
         }
         public void bindProducts(Product product) {
             Picasso.get().load(product.getImage()).into(imageView);
             price.setText(product.getPrice());
+            name.setText( product.getName() );
 
 
         }
     }
+    @NotNull
     @Override
     public ProductAdapter.ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_card, parent, false);
-        return new ProductViewHolder(view);
+        return new ProductViewHolder( view );
     }
-
-
-
 
     @Override
     public void onBindViewHolder(ProductAdapter.ProductViewHolder holder, int position) {

@@ -81,7 +81,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void openBuyActivity() {
-        Intent browserIntent = new Intent(StartActivity.this, BuyActivity.class);
+        Intent browserIntent = new Intent(StartActivity.this, CustomersBuyActivity.class);
         startActivity(browserIntent);
     }
 

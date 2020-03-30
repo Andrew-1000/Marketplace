@@ -56,18 +56,27 @@
                 app:layout_constraintGuide_end="467dp" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="313dp"
-                android:layout_height="65dp"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
                 app:layout_constraintBottom_toTopOf="@+id/guideline4"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:errorEnabled="true"
+                android:layout_margin="@dimen/layout_margin"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:layout_constraintTop_toTopOf="@+id/guideline3">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:textSize="@dimen/reg_text_size"
                     android:id="@+id/categoryName"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:padding="@dimen/padding_thirty_dp"
+                    android:fontFamily="@font/josefin"
+                    android:inputType="text"
+                    android:textAppearance="@style/Theme.Material"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
                     android:hint="@string/category_name" />
             </com.google.android.material.textfield.TextInputLayout>
 

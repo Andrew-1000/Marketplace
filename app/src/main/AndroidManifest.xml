@@ -6,11 +6,17 @@
 
     <application
         android:allowBackup="true"
+        android:largeHeap="true"
         android:icon="@drawable/market_stand"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Material">
+
+        <activity android:name=".ui.CustomersBuyActivity"
+            android:theme="@style/Theme.Material">
+
+        </activity>
         <activity android:name=".ui.NewCategoryActivity"
             android:theme="@style/Theme.Material">
 

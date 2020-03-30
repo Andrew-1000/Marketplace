@@ -14,30 +14,23 @@ public class Product {
     private String category;
     private String imageName;
     @SerializedName("imageurl")
-    private String imageUrl;
+    private String image;
 
 
 
-
-
-    public Product( String title, String image, String price, String description) {
+    public Product( String title, String image, String price) {
         this.name = title;
-        this.imageUrl = image;
+        this.image = image;
         this.price = price;
-        this.description = description;
+
     }
-    public Product( String title,  String description, String price, String location, String category, String imageUrl ) {
+    public Product( String title,  String description, String price, String location, String category, String image) {
         this.name = title;
         this.description = description;
         this.price = price;
         this.location = location;
         this.category = category;
-
-        this.imageUrl = imageUrl;
-
-
-
-
+        this.image = image;
 
     }
 
@@ -62,14 +55,6 @@ public class Product {
         this.name = name;
     }
 
-    public String getImage() {
-        return imageUrl;
-    }
-
-    public void setImage(String image) {
-        this.imageUrl = image;
-    }
-
 
     public String getPrice() {
         return price;
@@ -86,12 +71,12 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
-    public String getImageUrl() {
-        return imageUrl;
+    public String getImage() {
+        return image;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getImageName() {

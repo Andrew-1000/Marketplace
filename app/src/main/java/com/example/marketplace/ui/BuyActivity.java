@@ -57,6 +57,7 @@ public class BuyActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
+        inflater.inflate( R.menu.cart, menu );
         inflater.inflate( R.menu.home, menu );
         inflater.inflate( R.menu.logout, menu );
         return super.onCreateOptionsMenu( menu );
@@ -94,7 +95,7 @@ public class BuyActivity extends AppCompatActivity {
     private void getProductsData(List<Product> body) {
         productsRecyclerView = findViewById(R.id.product_list);
         productAdapter = new ProductAdapter(body);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 1);
         productsRecyclerView.setLayoutManager(layoutManager);
         productsRecyclerView.setAdapter(productAdapter);
 

@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.marketplace.R;
 import com.example.marketplace.model.Product;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.ChildEventListener;
@@ -33,6 +34,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
+import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -98,6 +100,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         Unbinder unbinder = ButterKnife.bind( this, view );
         imageView.setOnClickListener( this );
         btnSaveProduct.setOnClickListener( this );
+
         return view;
     }
 
@@ -112,23 +115,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         getCategoriesToSpinners();
 
         super.onViewCreated( view, savedInstanceState );
+
     }
 
-//            private void getKiosksToSpinner() {
-//
-//                valueEventListener = kioskDatabaseReference.addValueEventListener( new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                        for (DataSnapshot item : dataSnapshot.getChildren()) {
-//                            kioskSpinnerData.add( Objects.requireNonNull( item.getValue() ).toString());
-//                        }
-//                        kioskAdapter.notifyDataSetChanged();
-//                    }
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError databaseError) {
-//                    }
-//                } );
-//            }
             private void getKiosksToSpinners() {
                 Query valueEventListener = kioskDatabaseReference.orderByChild( "kiosk_location" );
                 valueEventListener.addChildEventListener( new ChildEventListener() {
@@ -215,7 +204,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private void openImageChooserToPickImage() {
         Intent intent = new Intent();
         intent.setType( "image/*" );
-        intent.setAction( Intent.ACTION_GET_CONTENT );
+        intent.setAction( Intent.ACTION_GET_CONTENT  );
         startActivityForResult( intent, REQUEST_TO_PICK_IMAGE );
     }
 
@@ -242,33 +231,44 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             + "." + getExtensionOfImage( imageUri ));
 
             savingTask = fileReference.putFile( imageUri )
-                    .addOnSuccessListener( taskSnapshot -> {
-                       //Delays reset of progress bar for 5 sec
-                        Handler handler = new Handler(  );
-                        Toast.makeText( getActivity(), "Posting Product", Toast.LENGTH_LONG ).show();
+                    .addOnSuccessListener( (UploadTask.TaskSnapshot taskSnapshot) -> {
+                        Handler handler = new Handler();
                         handler.postDelayed( () -> progressBar.setProgress( 0 ), 500 );
-
+                        progressBar.setVisibility( View.GONE );
                         Toast.makeText( getActivity(), "Product successfully posted", Toast.LENGTH_LONG ).show();
+                        Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
+                        while (!urlTask.isSuccessful());
+                        Uri downloadUrl = urlTask.getResult();
+
+                        //Log.d(TAG, "onSuccess: firebase download url: " + downloadUrl.toString());
+                        // use if testing...don't need this line.
+                        assert downloadUrl != null;
                         Product product = new Product(
                                 Objects.requireNonNull( productName.getText() ).toString().trim(),
                                 Objects.requireNonNull( productDescription.getText() ).toString().trim(),
                                 Objects.requireNonNull( productPrice.getText() ).toString().trim(),
                                 kioskLocation.getSelectedItem().toString(),
                                 productCategory.getSelectedItem().toString(),
-                                Objects.requireNonNull( taskSnapshot.getUploadSessionUri() ).toString());
+                                downloadUrl.toString());
 
-                        String id = productsDatabaseReference.push().getKey();
-                        assert id != null;
-                        productsDatabaseReference.child( id ).setValue( product );
-                    } ).addOnFailureListener( e -> Toast.makeText( getActivity(), e.getMessage(), Toast.LENGTH_SHORT ).show() ). addOnProgressListener( taskSnapshot -> {
-                double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                progressBar.setProgress( (int) progress );
+                                String id = productsDatabaseReference.push().getKey();
+                                assert id != null;
+                                productsDatabaseReference.child( id ).setValue( product );
+
+
+                    } ).addOnFailureListener( e -> Toast.makeText( getActivity(), e.getMessage(),
+                            Toast.LENGTH_SHORT ).show()
+                    ). addOnProgressListener( taskSnapshot -> {
+                progressBar.setVisibility( View.VISIBLE );
+                Toast.makeText( getActivity(), "Posting Product", Toast.LENGTH_SHORT ).show();
 
             } );
         } else {
             Toast.makeText( getActivity(), "No image selected", Toast.LENGTH_SHORT ).show();
         }
     }
+
+
 }
 
 
