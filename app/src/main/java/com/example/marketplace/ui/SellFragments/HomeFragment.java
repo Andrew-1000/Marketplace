@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.marketplace.R;
 import com.example.marketplace.model.Product;
+import com.example.marketplace.ui.CustomersBuyActivity;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -197,17 +198,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }else{
                 postProduct();
             }
-
         }
     }
-
     private void openImageChooserToPickImage() {
         Intent intent = new Intent();
         intent.setType( "image/*" );
         intent.setAction( Intent.ACTION_GET_CONTENT  );
         startActivityForResult( intent, REQUEST_TO_PICK_IMAGE );
     }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult( requestCode, resultCode, data );
@@ -218,7 +216,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             Picasso.get().load( imageUri ).into( imageView );
         }
     }
-
     //gets the file extension from the image
     private String getExtensionOfImage(Uri uri) {
         ContentResolver contentResolver = Objects.requireNonNull( getActivity() ).getContentResolver();
@@ -254,6 +251,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                                 String id = productsDatabaseReference.push().getKey();
                                 assert id != null;
                                 productsDatabaseReference.child( id ).setValue( product );
+                                Intent intent = new Intent( getContext(), CustomersBuyActivity.class );
+                                startActivity( intent );
 
 
                     } ).addOnFailureListener( e -> Toast.makeText( getActivity(), e.getMessage(),
@@ -262,13 +261,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 progressBar.setVisibility( View.VISIBLE );
                 Toast.makeText( getActivity(), "Posting Product", Toast.LENGTH_SHORT ).show();
 
+
             } );
         } else {
             Toast.makeText( getActivity(), "No image selected", Toast.LENGTH_SHORT ).show();
         }
     }
-
-
 }
 
 
