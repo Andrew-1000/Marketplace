@@ -66,7 +66,7 @@
             android:layout_gravity="center"
             android:orientation="horizontal"
             android:padding="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_sign_in"
+            app:layout_constraintBottom_toTopOf="@+id/add_to_cart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
 
@@ -94,7 +94,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_sign_in"
+            android:id="@+id/add_to_cart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"

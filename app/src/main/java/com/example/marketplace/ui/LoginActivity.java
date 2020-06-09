@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     TextInputEditText mPassword;
     @BindView(R.id.signed_in)
     CheckBox mCheckBox;
-    @BindView(R.id.btn_sign_in)
+    @BindView(R.id.add_to_cart)
     MaterialButton mSignin;
 
 
@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences( "checkbox", MODE_PRIVATE );
         String checkbox = preferences.getString(  "remember", "");
         if (checkbox.equals( "true" )){
-            Intent intent = new Intent( LoginActivity.this, MainActivity.class );
+            Intent intent = new Intent( LoginActivity.this, CustomersBuyActivity.class );
             startActivity( intent );
         } else  if (checkbox.equals( "false" )) {
             Toast.makeText( this, "Please sign in..", Toast.LENGTH_SHORT ).show();
